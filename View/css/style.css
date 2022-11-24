@@ -182,7 +182,7 @@ body,h1,h2,h3,h4,h5,h6,p,a,span{
     transition: .4s;
 }
 .defaultbtn:hover{
-    background: #6278df;
+    background: #000000;
     color: white;
 }
 /* Banner Section */

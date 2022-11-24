@@ -41,6 +41,23 @@ class PessoaController
         include 'View/modules/Pessoa/login.php'; // Include da View. Note que a variável $model está disponível na View.
     }
 
+    public static function form_pj()
+    {
+        include 'Model/PessoaModel.php'; // inclusão do arquivo model.
+        
+        include 'View/modules/Pessoa/login_pj.php'; // Include da View. Note que a variável $model está disponível na View.
+    }
+
+    public static function gestao()
+    {
+        include 'View/modules/serviços/gestaopj.php'; // Página Pde atendimento PJ
+
+    }
+    public static function serviços_pj()
+    {
+        include 'View/modules/serviços/home.php'; // Página Principal de serviços.
+
+    }
 
     /**
      * Preenche um Model para que seja enviado ao banco de dados para salvar.
@@ -48,6 +65,8 @@ class PessoaController
     public static function save_user()
     {
        include_once 'Model/PessoaModel.php'; // inclusão do arquivo model.
+
+       
 
        // Abaixo cada propriedade do objeto sendo abastecida com os dados informados
        // pelo usuário no formulário (note o envio via POST)
@@ -58,13 +77,13 @@ class PessoaController
        $model->email = $_POST['email_cad'];
        $model->cell = $_POST['cell_cad'];
        $model->cpf = $_POST['cpf_cad'];
-       $model->senha = $_POST['senha_cad'];
+       $model->senha = password_hash($_POST['senha_cad'], PASSWORD_DEFAULT);
+       $model->data_c = $_POST['data_c'];
 
        $model->save_us(); // chamando o método save da model.
 
-       header( "Location:/app/login"); // redirecionando o usuário para outra rota.
+       header( "Location:/app/login_pj"); // redirecionando o usuário para outra rota.
     }
-
 
     /**
      * Método para tratar a rota delete. 

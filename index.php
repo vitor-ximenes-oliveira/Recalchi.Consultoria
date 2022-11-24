@@ -8,12 +8,12 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // Para saber mais estrutura switch, leia: https://www.php.net/manual/pt_BR/control-structures.switch.php
 switch($url)
 {
+
     case '/app/':
         {
             include 'View/modules/Pessoa/index.html';
         }
-
-        break;
+    break;
 
     case '/app/home/':
         // Para saber mais sobre o Operador de Resolução de Escopo (::), 
@@ -22,7 +22,21 @@ switch($url)
     break;
 
     case '/app/login':
+        
         PessoaController::form();
+    break;
+
+    case '/app/gestao':
+        
+        PessoaController::gestao();
+    break;
+    case '/app/campanha':
+        
+        PessoaController::serviços_pj();
+    break;
+
+    case '/app/login_pj':
+        PessoaController::form_pj();
     break;
 
     case '/app/save':

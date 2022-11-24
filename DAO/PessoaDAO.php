@@ -26,7 +26,7 @@ class PessoaDAO
         // DSN (Data Source Name) onde o servidor MySQL será encontrado
         // (host) em qual porta o MySQL está operado e qual o nome do banco pretendido
         // Mais informações sobre DSN: https://www.php.net/manual/pt_BR/ref.pdo-mysql.connection.php
-        $dsn = "mysql:host=localhost:3306;dbname=recalchi_db";
+        $dsn = "mysql:host=localhost:3306;dbname=formulariocad";
 
         // Criando a conexão e armazenado na propriedade definida para tal.
         // Veja o que é PDO: https://www.php.net/manual/pt_BR/intro.pdo.php
@@ -41,7 +41,7 @@ class PessoaDAO
     public function insert_user(PessoaModel $model)
     {
         // Trecho de código SQL com marcadores ? para substituição posterior, no prepare
-        $sql = "INSERT INTO usuario (user, nome, email, cell, cpf, senha) VALUES (?, ?, ?, ?, ?, ?) ";
+        $sql = "INSERT INTO usuarios (user, nome, email, telefone, cpf_cnpj, senha, data_c) VALUES (?, ?, ?, ?, ?, ?, ?) ";
 
 
         // Declaração da variável stmt que conterá a montagem da consulta. Observe que
@@ -62,11 +62,12 @@ class PessoaDAO
         $stmt->bindValue(4, $model->cell);
         $stmt->bindValue(5, $model->cpf);
         $stmt->bindValue(6, $model->senha);
+        $stmt->bindValue(7, $model->data_c);
+
 
          // Ao fim, onde todo SQL está montando, executamos a consulta.
         $stmt->execute();
     }
-
 
     /**
      * Método que recebe o Model preenchido e atualiza no banco de dados.

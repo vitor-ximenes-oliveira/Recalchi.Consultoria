@@ -44,34 +44,37 @@
 
       <!--FORMULÁRIO DE CADASTRO--> 
       <div id="cadastro">
-      <form method="post" action="/pessoa/form/save">
-          <h1>Cadastro</h1> 
+      <form method="post" action="/app/save">
+          <h1>Cadastre sua Empresa</h1> 
           
           <p> 
-            <label for="user">Seu usuário</label>
+            <label for="user">Defina um usuário</label>
             <input id="user_cad" name="user_cad" required="required" type="text" placeholder="Richard" />
           </p>
 
           <p> 
-            <label for="nome_cad">Seu nome</label>
-            <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="Richard Vickman" />
+            <label for="nome_cad">Nome da sua Empresa</label>
+            <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="Ex:Bussines Parther" />
           </p>
           
           <p> 
             <label for="email_cad">Seu e-mail</label>
-            <input id="email_cad" name="email_cad" required="required" type="email" placeholder="Richardpro@gmail.com"/> 
+            <input id="email_cad" name="email_cad" required="required" type="email" placeholder="company@gmail.com"/> 
           </p>
           <p> 
-            <label for="cell_cad">Seu celular </label>
-            <input id="cell_cad" name="cell_cad" required="required" type="senha" placeholder="11 98789-9797"/>
+            <label for="cell_cad">Telefone ou Celular </label>
+            <input id="cell_cad" name="cell_cad" required="required" type="number" placeholder="11 98789-9797"/>
           </p>
           <p> 
-            <label for="cpf_cad">Seu cpf </label>
-            <input id="cpf_cad" name="cpf_cad" required="required" type="senha" placeholder="000000000.92"/>
+            <label for="cnpj_cad">Seu cnpj </label>
+            <input id="cnpj_cad" name="cpf_cad" required="required" type="text" placeholder="00.000.000/0001-00"/>
           </p>          
           <p> 
             <label for="senha_cad">Sua senha</label>
-            <input type="password" id="senha_cad" name="senha_cad" required="required" placeholder="1234"/>
+            <input type="password" id="senha_cad" name="senha_cad" required="required" placeholder="*****"/>
+          </p>
+          <p> 
+            <input type="hidden" id="data_c" name="data_c" value="1/1/2023" />
           </p>
           <p> 
             <input type="submit" name="submitc" value="Cadastrar"/> 

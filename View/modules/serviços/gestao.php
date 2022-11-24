@@ -17,10 +17,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recalchi - Consultoria</title>
+    <title>Recalchi - Manage</title>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/app/View/css/style.css">
 
     <script type="text/javascript" src="js/home.js"></script>
 
@@ -32,7 +32,7 @@
             <div class="headerlogo left">
                 <a class="logo" target="_blank" href="home.php">
                     <img src="https://i.ibb.co/PxptZWx/logo.png" alt="">
-                    <span>Recalchi Consultoria</span>
+                    <span>Recalchi Manage</span>
                 </a>
             </div>
             <div class="headermenu left">
@@ -69,13 +69,11 @@
     <div class="bannersection">
         <div class="midcontent">
             <div class="bannercontent tc">
-                <h2>Etapas da sua Consultoria Financeira</h2>
-                <h3>Acompanhe com cada detalhe de seu atendimento</h3>
-                <a  class="defaultbtn" href="orçamentos/orçamentos.php"> <i class="fa fa-android" aria-hidden="true"></i> Orçamento</a>
-                <a class="defaultbtn" href="objetivos/objetivos.php"> <i class="fa fa-apple" aria-hidden="true"></i> Objetivos</a>
-                <a class="defaultbtn" href="#"> <i class="fa fa-apple" aria-hidden="true"></i> Investimentos</a>
-                <a class="defaultbtn" href="#"> <i class="fa fa-apple" aria-hidden="true"></i> Tributação</a>
-                <a class="defaultbtn" href="#"> <i class="fa fa-apple" aria-hidden="true"></i> Herança</a>                
+                <h2>Manage gestão de serviços</h2>
+                <h3>O melhor serviços de gestão para o seu negócio</h3><br>
+                <a  class="defaultbtn" href="orçamentos/orçamentos.php"></i> Custo de Produto</a>
+                <a class="defaultbtn" href="objetivos/objetivos.php"> </i> Custos Empresarial</a>
+               
             </div>
         </div>
     </div>
