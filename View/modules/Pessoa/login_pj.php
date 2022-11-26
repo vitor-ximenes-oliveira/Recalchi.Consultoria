@@ -14,16 +14,16 @@
     <div class="content">      
       <!--FORMULÁRIO DE LOGIN-->
       <div id="login">
-        <form method="POST" action="testlogin.php"> 
+        <form method="POST" action="/app/login_logar"> 
           <h1>Login</h1> 
           <p> 
             <label for="user">Seu Usuário</label>
-            <input id="user" name="user" required="required" type="text" placeholder="Tio17"/>
+            <input id="user" name="usuario" required="required" type="text" placeholder="Tio17"/>
           </p>
           
           <p> 
             <label for="senha_login">Sua senha</label>
-            <input type="password" id="senha_login" name="senha_login"  minlength="8" required="required"  placeholder="1234" /> 
+            <input type="password" id="senha_login" name="senha"  minlength="8" required="required"  placeholder="1234" /> 
           </p>
           
           <p> 

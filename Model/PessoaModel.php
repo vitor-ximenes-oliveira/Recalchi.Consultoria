@@ -11,7 +11,7 @@ class PessoaModel
      * Declaração das propriedades conforme campos da tabela no banco de dados.
      * para saber mais sobre Propriedades de Classe, leia: https://www.php.net/manual/pt_BR/language.oop5.properties.php
      */
-    public $user, $nome, $email, $cell, $cpf, $senha, $data_c;
+    public $user, $nome, $email, $cell, $cpf, $senha, $data_c, $user_login, $senha_login;
 
 
     /**
@@ -35,6 +35,20 @@ class PessoaModel
             // Chamando o método insert que recebe o próprio objeto model
             // já preenchido
             $dao->insert_user($this);
+
+               
+    }
+    public function validar_logar()
+    {
+        
+        include  'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
+
+        // Instância do objeto e conexão no banco de dados via construtor
+        $dao = new PessoaDAO(); 
+
+            // Chamando o método insert que recebe o próprio objeto model
+            // já preenchido
+            $dao->logar_conta($this);
 
                
     }

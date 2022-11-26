@@ -135,4 +135,23 @@ class PessoaDAO
         $stmt->bindValue(1, $id);
         $stmt->execute();
     }
+
+    public function logar_conta(PessoaModel $model)
+    {
+        // Trecho de código SQL com marcadores ? para substituição posterior, no prepare
+        $sql = "SELECT * FROM usuarios WHERE  user = ? AND senha = ? ";
+
+
+        $stmt = $this->conexao->prepare($sql);
+
+
+        $stmt->bindValue(1, $model->user_login);
+        $stmt->bindValue(2, $model->senha_login);
+
+
+         // Ao fim, onde todo SQL está montando, executamos a consulta.
+        $stmt->execute();
+        return $stmt->fetchObject("PessoaModel"); // Retornando um objeto específico PessoaModel
+
+    }
 }

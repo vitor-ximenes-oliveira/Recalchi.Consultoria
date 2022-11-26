@@ -26,6 +26,12 @@ switch($url)
         PessoaController::form();
     break;
 
+    case '/app/login_logar':
+        
+        PessoaController::logar();
+    break;
+
+
     case '/app/gestao':
         
         PessoaController::gestao();
