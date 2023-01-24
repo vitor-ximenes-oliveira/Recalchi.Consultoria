@@ -15,11 +15,6 @@ switch($url)
         }
     break;
 
-    case '/app/home/':
-        // Para saber mais sobre o Operador de Resolução de Escopo (::), 
-        // leia: https://www.php.net/manual/pt_BR/language.oop5.paamayim-nekudotayim.php
-        PessoaController::index();
-    break;
 
     case '/app/login':
         
@@ -27,9 +22,14 @@ switch($url)
     break;
 
     case '/app/login_logar':
-        
+
         PessoaController::logar();
     break;
+    case '/app/login2':
+
+        PessoaController::logar2();
+    break;
+
 
 
     case '/app/gestao':
@@ -41,8 +41,8 @@ switch($url)
         PessoaController::serviços_pj();
     break;
 
-    case '/app/login_pj':
-        PessoaController::form_pj();
+    case '/app/home':
+        PessoaController::home();
     break;
 
     case '/app/save':

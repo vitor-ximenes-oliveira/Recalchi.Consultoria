@@ -139,19 +139,65 @@ class PessoaDAO
     public function logar_conta(PessoaModel $model)
     {
         // Trecho de código SQL com marcadores ? para substituição posterior, no prepare
-        $sql = "SELECT * FROM usuarios WHERE  user = ? AND senha = ? ";
+        $sql = "SELECT id, nome FROM usuarios WHERE user=? AND senha=?";
 
 
         $stmt = $this->conexao->prepare($sql);
 
-
         $stmt->bindValue(1, $model->user_login);
-        $stmt->bindValue(2, $model->senha_login);
+        $stmt->bindValue(2, $model->pass);
+
 
 
          // Ao fim, onde todo SQL está montando, executamos a consulta.
+        // $stmt->execute(array('marcador:id' =>));
         $stmt->execute();
-        return $stmt->fetchObject("PessoaModel"); // Retornando um objeto específico PessoaModel
+
+
+        $dados_do_usuario = $stmt->fetchObject();
+
+        var_dump($dados_do_usuario);
+
+
+        // if($dados_do_usuario) {
+
+        //     $_SESSION["usuario_logado"] = $dados_do_usuario->id;
+        //     header( "Location:/app/login2"); // redirecionando o usuário para outra rota.
+
+        // } else 
+        //     header("Location:/app/login");
+
+
+    }
+    public function logar_conta2(PessoaModel $model)
+    {
+        // Trecho de código SQL com marcadores ? para substituição posterior, no prepare
+        $sql = "SELECT id, nome FROM usuarios WHERE pass=? ";
+
+
+        $stmt = $this->conexao->prepare($sql);
+
+        $stmt->bindValue(1, $model->pass);
+
+
+         // Ao fim, onde todo SQL está montando, executamos a consulta.
+        // $stmt->execute(array('marcador:id' =>));
+        $stmt->execute();
+
+
+        $dados_do_usuario = $stmt->fetchObject();
+
+        var_dump($dados_do_usuario);
+
+
+        // if($dados_do_usuario) {
+
+        //     $_SESSION["usuario_logado"] = $dados_do_usuario->id;
+        //     header( "Location:/app/login2"); // redirecionando o usuário para outra rota.
+
+        // } else 
+        //     header("Location:/app/login");
+
 
     }
 }

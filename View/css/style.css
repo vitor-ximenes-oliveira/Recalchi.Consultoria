@@ -1,0 +1,591 @@
+@import url("https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.css");
+
+.box-search{
+    display:flex;
+    justify-content: center;
+    gap: .1%;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.tl{
+    text-align: left;
+}
+.tc{text-align: center;}
+.tr{text-align: right;}
+.clear::after{
+    content: '';
+    clear: both;
+    display: block;
+}
+.tt{
+    text-transform: capitalize;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+img{
+    max-width: 100%;
+}
+a{
+    text-decoration: none;
+} 
+.midcontent{
+    max-width: 1300px;
+    margin: auto;
+}
+.pbg{
+    background-color: #f7f9ff;
+}
+/* Begin main css */
+body,h1,h2,h3,h4,h5,h6,p,a,span{
+    font-family: 'Work Sans', sans-serif;
+}
+.headersection{
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 6px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+}
+.headersection a{
+    color: #010101;
+}
+.headerlogo{
+    width: 30%;
+}
+.logo img{
+    height: 60px;
+    float: left;
+    margin-right: 10px;
+}
+.logo span{
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 29px;
+    font-weight: 500;
+}
+.headermenu{
+    width: 60%;
+}
+.headerbutton{
+    width: 10%;
+    text-align: right;
+}
+.headerbtn{
+    border: 2px solid #000000;
+    display: inline-block;
+    padding: 10px 21px;
+    border-radius: 10px;
+    margin-top: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    transition: .5s;
+}
+.headerbtn:hover{
+    background-color: #000000;
+    color: #fff;
+}
+.primarymenu{}
+.primarymenu ul{}
+.primarymenu ul li{
+    display: inline-block;
+}
+.primarymenu ul li a{
+    display: block;
+    padding: 0 20px;
+    font-size: 17px;
+    line-height: 60px;
+}
+.primarymenu ul li a:hover{}
+
+/* DropDown menu Css */
+.primarymenu ul li{
+    position: relative;
+}
+.primarymenu ul li ul{
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 300px;
+    background: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+    transform: scaleY(0);
+    transform-origin: top center;
+}
+.primarymenu ul li ul li{
+    display: block;
+}
+.primarymenu ul li:hover ul{
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1);
+    background: #6278df;
+    color: white;
+    border-radius: 40px;
+}
+/* Banner CSS */
+.bannersection{
+    background: url("https://i.ibb.co/0JN9QX8/3.jpg") no-repeat center center ;
+    /* background-attachment: fixed; */
+    background-size: cover;
+    padding: 200px 0;
+    color: #fff;
+    position: relative;
+    z-index: 9;
+    margin-top: 70px;
+}  
+.bannersection::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.4);
+    z-index: -1;
+}
+.bannersection h2{
+    font-size: 60px;
+    margin: 30px 0;
+}
+.bannersection h3{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+
+.defaultbtn{
+    color: #7d7d7d;
+    padding: 20px 30px;
+    background: white;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+    transition: .4s;
+}
+.defaultbtn:hover{
+    background: #000000;
+    color: white;
+}
+/* Banner Section */
+.bannerbottom{
+    background: #f7f9ff;
+    padding: 100px 0;
+}
+.videoleft{
+    width: 48%;
+}
+.videocontentright{
+    width: 48%;
+}
+.videocontentright h3{
+    font-size: 51px;
+    font-weight: 400;
+    margin-bottom: 35px;
+}
+.videocontentright p{
+    color: #767676;
+    font-size: 18px;
+    line-height: 1.7em;
+}
+/* service Section */
+.servicesection{
+    background: white;
+    padding: 100px 0;
+}
+.sectiontitle h1{
+    font-size: 64px;
+    margin-bottom: 30px;
+}
+.sectiontitle p {
+    color: #767676;
+    font-size: 35px;
+    margin-top: 25px;
+    font-weight: 300;
+    display: inline-block;
+}
+/* service Item */
+.serviceitem{
+    margin-top: 90px;
+}
+.servicebox{
+    width: 31%;
+    box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, .1);
+    margin-right: 2%;
+    margin-bottom: 30px;
+    padding: 25px;
+    box-sizing: border-box;
+}
+.servicebox:nth-child(3n+3){}
+.serviceicon{
+    width: 50px;
+    float: left;
+    min-height: 168px;
+    font-size: 45px;
+    color: #000000;
+    margin-right: 10px;
+}
+.servicecontent{
+    margin-top: 8px;
+}
+.servicecontent h3{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.servicecontent p{
+    color: #767676;
+    font-size: 20px;
+    line-height: 1.6em;
+}
+/* Pricing table CSS */
+.pricingtablesection{
+    background: #f7f9ff;
+    padding: 50px;
+}
+.sectiontitle h2{
+    font-size: 56px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.pricingtable{
+    margin-top: 80px; 
+}
+.pricingtableitem{
+    width: 31.3%;
+    margin-right: 2%;
+    background: white;
+    box-shadow: 3px 4px 30px 0 rgba(98, 120, 223,.1);
+}
+.pricingtableitem:nth-child(3){
+    margin-right: 0;
+}
+.pheading{  
+    padding: 30px; 
+    border-bottom: 1px solid #ddd;
+    transition: .3s;
+}
+.pcontent{
+    padding: 30px;
+}
+.pheading h4{
+    font-size: 25px;
+    font-weight: 500;
+}
+.pheading h1 span{
+    font-size: 21px;
+}
+.pheading h1{
+    margin: 42px 0;
+    font-size: 56px;
+}
+.pheading h5{
+    font-weight: 500;
+    font-size: 21px;
+    margin-bottom: 22px;
+}
+.pheading p{
+    font-size: 20px;
+    line-height: 1.5em;
+}
+.pcontent ul{
+    list-style: none;
+}  
+.pcontent ul li{
+    margin: 25px 0;
+    color: #767676;
+    font-size: 22px;
+}
+.pcontent ul li span{
+    display: inline-block;
+    font-size: 35px;
+    color: #6278df;
+    width: 60px;
+}
+.pbutton .defaultbtn{
+    box-shadow: 3px 4px 30px 0 rgba(98, 120, 223,.3);
+}  
+.pricingtableitem:hover .pheading{
+    background: #6278df;
+    color: white;
+}
+.pricingtableitem:hover .pbutton .defaultbtn{
+    background: #6278df;
+    color: white;
+    /* background-color: #000; */
+}
+.teamsection{
+    padding: 100px 0;
+}
+.teamsection .sectiontitle h2{
+    font-size: 40px;
+}
+.teammember{
+    margin-top: 80px;
+}
+.member{
+    width: 22%;
+    padding-bottom: 10px;
+    margin-right: 2%;
+    background: white;
+    box-shadow: 3px 4px 30px 0 rgba(98, 120, 223,.2);
+}
+.member img{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}  
+.memberbio{
+    padding: 30px;
+}
+.memberbio h4{
+    font-size: 20px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+.memberbio p{
+    color: #767676;
+    font-size: 18px;
+}
+.newslattersection{
+    padding: 100 0;
+}
+.sectiontitle .newslattertitle h2{
+    margin-top: 50px;
+    font-size: 44px;
+}
+.newslatterform{
+    margin-top: 60px;
+}
+.defaultinput{
+    width: 350px;
+    padding: 20px 15px;
+    font-size: 20px;
+    border: 1px solid #e4e4e4;
+    border-radius: 10px;
+    box-shadow: 3px 4px 30px 0 rgba(98, 120, 223,.1);
+    transition: .4s;
+    box-sizing: border-box;
+}
+
+.defaultinput:focus{
+    box-shadow: 3px 4px 30px 0 #6278df80; 
+    border: 1px solid #6278df !important;
+}
+
+.submitbtn{
+    background: #6287df;
+    font-size: 23px;
+    color: #fff;
+    border: none;
+    padding: 20px 50px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 15px;
+    box-shadow: 3px 4px 30px 0 #6278df33;
+    transition: .4s;
+    border: 2px solid #6278df;
+}
+.submitbtn:hover{
+    box-shadow: 3px 4px 30px 0 #6278df66;
+    background: #fff;
+    color: #6278df;
+    border: 2px solid #6278df;
+}
+/* Blog section CSS */
+.blogsection{
+    padding: 100px 0;
+    padding-top: 20;
+}
+.blogtitle{
+    padding: 60px 0;
+}
+.blogitem{}
+.bheading {
+    width: 50%;
+    padding: 53px 0;
+}
+.bheading h2{
+    font-size: 45px;
+    font-weight: 500;
+    margin-top: 25px;
+}
+.btcontent{ 
+    width: 50%;
+}
+.btcontent p{ 
+    color: #767676;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.7em;
+}
+.blogpostitem{
+    width: 48%;
+    background: #fff;
+    box-shadow: 3px 4px 30px 0 rgba(98, 120, 223,.2);
+}
+.blogpostitem img{
+    float: left;
+    width: 300px;
+    margin-right: 30px;
+}
+.blogpostcontent{
+    margin-top: 26px;
+}
+.blogpostcontent h3{
+    font-size: 25px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.blogpostcontent p{
+    color: #767676;
+    font-size: 20px;
+    line-height: 1.7em;
+}
+/* testimonial section */
+.testimonialsection{
+    padding: 100px 0;
+}
+.testimonialitem{
+    margin-top: 100px;
+}
+.iitem{
+    width: 32%;
+    margin-right: 2%;
+}
+.iitem:last-child{
+    margin-right: 0;
+}
+.tcontent{
+    background: #fff;
+    padding: 50px 40px;
+    box-sizing: border-box;
+    box-shadow: 3px 4px 30px 0 rgba(98, 120, 223,.2);
+    margin-bottom: 42px;
+    position: relative;
+}
+.tcontent::after {
+    content: "";
+    position: absolute;
+    bottom: -19px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 20px 0 20px;
+    border-color: #fff transparent transparent transparent;
+}
+.tcontent p{
+    color: #767676;
+    font-size: 20px;
+    line-height: 1.8em;
+    position: relative;
+    margin-bottom: 0;
+}
+.tcontent p::before{
+    content: "\f10d";
+    font-family: FontAwesome;
+    font-size: 80px;
+    position: absolute;
+    opacity: .15;
+    left: -17px;
+    top: -4px;
+}
+.tuserimg{
+    width: 250px;
+    margin: auto;
+}
+.tuserimg img{
+    border-radius: 50%;
+    width: 80px;
+    float: left;
+    margin-right: 24px;
+}
+.tuserbio{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.tuserbio span{
+    display: inline-block;
+    color: #767676;
+    font-size: 17px; 
+}
+.tuserbio{
+    position: relative;
+    top: 13px;
+}
+.tuserbio h4{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.contactsection{
+    padding-top: 80px;
+}
+.contactrow{}
+.contentleftmap{
+    width: 48%;
+}
+.contentrightform{
+    width: 48%;
+    margin-top: 40px;
+}
+.footer{
+    padding: 20px 0;
+    margin-top: 60px;
+}
+.footer p{
+    font-size: 20px;
+    
+}
+.footercontactform .w100{
+    width: 100%;
+}
+.footercontactform .w50{
+    width: 48%;
+}
+.footercontactform .defaultinput{
+    margin-bottom: 20px;
+}
+.footercontactform{
+    margin-top: 60px;
+}
+.footercontactform .submitbtn{
+    margin-left: 0;
+}
+.footercontactform{
+    height: 200px;
+}
+.contentrightform p{
+    font-size: 21px;
+    color: #767676;
+    line-height: 1.8em;
+}
+.contentrightform h4{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 22px;
+}

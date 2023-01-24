@@ -40,48 +40,34 @@ class PessoaController
 
         include 'View/modules/Pessoa/login.php'; // Include da View. Note que a variável $model está disponível na View.
     }
+    public static function logar2()
+    {
+        include 'Model/PessoaModel.php'; // inclusão do arquivo model.
+            $model = new PessoaModel();
 
-    public static function form_pj()
+            $model->user_login =  $_POST['user'];
+            $model->pass = $_POST['pass'];
+            // $model->pass = password_verify($_POST['pass'], PASSWORD_DEFAULT);
+  
+            $model->validar_logar2(); // chamando o método logar da model.
+ }
+    public static function home()
     {
         include 'Model/PessoaModel.php'; // inclusão do arquivo model.
         
-        include 'View/modules/Pessoa/login_pj.php'; // Include da View. Note que a variável $model está disponível na View.
+        include 'View/modules/Pessoa/home.php'; // Include da View. Note que a variável $model está disponível na View.
     }
     public static function logar()
-    {
-        if(isset($_POST['usuario']) || isset ($_POST['senha'])) {
+    {            
+        include 'Model/PessoaModel.php'; // inclusão do arquivo model.
+            $model = new PessoaModel();
 
-            if (strlen($_POST['usuario']) == 0) {
-                echo 'Email caralho';
-            } else if (strlen($_POST['senha']) == 0) {
-                echo "Preencha sua senha animal";
-            } else {
-                include 'Model/PessoaModel.php'; // inclusão do arquivo model.
-                        $model = new PessoaModel();
-
-                        $model->user_login =  $_POST['usuario'];
-                        $model->senha_login = $_POST['senha'];
-
-                
-                        $model->validar_logar(); // chamando o método save da model.
-                
-                        $dados_do_usuario = $stmt->fetchObject();
-
-                        if($dados_do_usuario) {
-                            $_SESSION["user"] = $user_s;
-                            header( "Location:/app/home"); // redirecionando o usuário para outra rota.
-
-                        }
-                        header( "Location:/app/login_pj"); // redirecionando o usuário para outra rota.
-
-            }
-            header( "Location:/app/login_pj"); // redirecionando o usuário para outra rota.
+            $model->user_login =  $_POST['user'];
+            $model->pass = password_verify($_POST['pass'], PASSWORD_DEFAULT);
+  
+            $model->validar_logar(); // chamando o método logar da model.
 
         }
-
-        
-
-    }
 
     public static function gestao()
     {

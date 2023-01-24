@@ -16,15 +16,12 @@
       <div id="login">
         <form method="POST" action="/app/login_logar"> 
           <h1>Login</h1> 
+          <p>           
           <p> 
-            <label for="user">Seu Usuário</label>
-            <input id="user_log" name="user" required="required" type="text" placeholder="Tio17"/>
+            <label for="pass">Sua senha</label>
+            <input type="" id="senha" name="pass"  minlength="3" required="required"  placeholder="asd@ads$" /> 
           </p>
-          <p> 
-            <label for="pass">Sua Senha</label>
-            <input id="pass" name="pass" required="required" type="password" placeholder="ads$32"/>
-          </p>
-
+          
           <p> 
             <input type="checkbox" name="manterlogado" id="manterlogado" value="" /> 
             <label for="manterlogado">Manter-me logado</label>
