@@ -21,12 +21,11 @@ class PessoaDAO
      * A conexão é aberta via PDO (PHP Data Object) que é um recurso da linguagem para
      * acesso a diversos SGBDs.
      */
-    public function __construct()
-    {
+    public function __construct(){
         // DSN (Data Source Name) onde o servidor MySQL será encontrado
         // (host) em qual porta o MySQL está operado e qual o nome do banco pretendido
         // Mais informações sobre DSN: https://www.php.net/manual/pt_BR/ref.pdo-mysql.connection.php
-        $dsn = "mysql:host=localhost:3306;dbname=formulariocad";
+        $dsn = "mysql:host=localhost:3306;dbname=manage";
 
         // Criando a conexão e armazenado na propriedade definida para tal.
         // Veja o que é PDO: https://www.php.net/manual/pt_BR/intro.pdo.php
@@ -38,10 +37,9 @@ class PessoaDAO
      * Método que recebe um model e extrai os dados do model para realizar o insert
      * na tabela correspondente ao model. Note o tipo do parâmetro declarado.
      */
-    public function insert_user(PessoaModel $model)
-    {
+    public function insert_user(PessoaModel $model){
         // Trecho de código SQL com marcadores ? para substituição posterior, no prepare
-        $sql = "INSERT INTO usuarios (user, nome, email, telefone, cpf_cnpj, senha, data_c) VALUES (?, ?, ?, ?, ?, ?, ?) ";
+        $sql = "INSERT INTO usuarios (user, nome, email, telefone, cnpj, senha, data_c,nivel_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
 
 
         // Declaração da variável stmt que conterá a montagem da consulta. Observe que
@@ -60,9 +58,12 @@ class PessoaDAO
         $stmt->bindValue(2, $model->nome);
         $stmt->bindValue(3, $model->email);
         $stmt->bindValue(4, $model->cell);
-        $stmt->bindValue(5, $model->cpf);
+        $stmt->bindValue(5, $model->cnpj);
         $stmt->bindValue(6, $model->senha);
-        $stmt->bindValue(7, $model->data_c);
+        $stmt->bindValue(7, $model->data_c);        
+        $stmt->bindValue(8, $model->nivel_usuario);        
+
+
 
 
          // Ao fim, onde todo SQL está montando, executamos a consulta.
@@ -73,8 +74,7 @@ class PessoaDAO
      * Método que recebe o Model preenchido e atualiza no banco de dados.
      * Note que neste model é necessário ter a propriedade id preenchida.
      */
-    public function update(PessoaModel $model)
-    {
+    public function update(PessoaModel $model){
         $sql = "UPDATE pessoa SET nome=?, cpf=?, data_nascimento=? WHERE id=? ";
 
         $stmt = $this->conexao->prepare($sql);
@@ -82,7 +82,7 @@ class PessoaDAO
         $stmt->bindValue(2, $model->nome);
         $stmt->bindValue(3, $model->email);
         $stmt->bindValue(4, $model->cell);
-        $stmt->bindValue(5, $model->cpf);
+        $stmt->bindValue(5, $model->cnpj);
         $stmt->bindValue(6, $model->senha);
         $stmt->execute();
     }
@@ -91,9 +91,8 @@ class PessoaDAO
     /**
      * Método que retorna todas os registros da tabela pessoa no banco de dados.
      */
-    public function select()
-    {
-        $sql = "SELECT * FROM pessoa ";
+    public function select(){
+        $sql = "SELECT * FROM usuario ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -109,8 +108,7 @@ class PessoaDAO
      * Retorna um registro específico da tabela pessoa do banco de dados.
      * Note que o método exige um parâmetro $id do tipo inteiro.
      */
-    public function selectById(int $id)
-    {
+    public function selectById(int $id){
         include_once 'Model/PessoaModel.php';
 
         $sql = "SELECT * FROM pessoa WHERE id = ?";
@@ -127,8 +125,7 @@ class PessoaDAO
      * Remove um registro da tabela pessoa do banco de dados.
      * Note que o método exige um parâmetro $id do tipo inteiro.
      */
-    public function delete(int $id)
-    {
+    public function delete(int $id){
         $sql = "DELETE FROM pessoa WHERE id = ? ";
 
         $stmt = $this->conexao->prepare($sql);
@@ -136,68 +133,16 @@ class PessoaDAO
         $stmt->execute();
     }
 
-    public function logar_conta(PessoaModel $model)
-    {
-        // Trecho de código SQL com marcadores ? para substituição posterior, no prepare
-        $sql = "SELECT id, nome FROM usuarios WHERE user=? AND senha=?";
-
+    public function selectUser(string $user){
+        $sql = "SELECT * FROM usuarios WHERE user = :user";
 
         $stmt = $this->conexao->prepare($sql);
-
-        $stmt->bindValue(1, $model->user_login);
-        $stmt->bindValue(2, $model->pass);
-
-
-
-         // Ao fim, onde todo SQL está montando, executamos a consulta.
-        // $stmt->execute(array('marcador:id' =>));
+        $stmt->bindParam(":user", $user);
         $stmt->execute();
-
-
-        $dados_do_usuario = $stmt->fetchObject();
-
-        var_dump($dados_do_usuario);
-
-
-        // if($dados_do_usuario) {
-
-        //     $_SESSION["usuario_logado"] = $dados_do_usuario->id;
-        //     header( "Location:/app/login2"); // redirecionando o usuário para outra rota.
-
-        // } else 
-        //     header("Location:/app/login");
-
+        $dados_do_usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+       
+        return $dados_do_usuario;
 
     }
-    public function logar_conta2(PessoaModel $model)
-    {
-        // Trecho de código SQL com marcadores ? para substituição posterior, no prepare
-        $sql = "SELECT id, nome FROM usuarios WHERE pass=? ";
-
-
-        $stmt = $this->conexao->prepare($sql);
-
-        $stmt->bindValue(1, $model->pass);
-
-
-         // Ao fim, onde todo SQL está montando, executamos a consulta.
-        // $stmt->execute(array('marcador:id' =>));
-        $stmt->execute();
-
-
-        $dados_do_usuario = $stmt->fetchObject();
-
-        var_dump($dados_do_usuario);
-
-
-        // if($dados_do_usuario) {
-
-        //     $_SESSION["usuario_logado"] = $dados_do_usuario->id;
-        //     header( "Location:/app/login2"); // redirecionando o usuário para outra rota.
-
-        // } else 
-        //     header("Location:/app/login");
-
-
-    }
+    
 }

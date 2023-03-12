@@ -38,7 +38,7 @@ switch($url)
     break;
     case '/app/campanha':
         
-        PessoaController::serviços_pj();
+        PessoaController::servicos_pj();
     break;
 
     case '/app/home':

@@ -5,13 +5,12 @@
  * Também é atribuído a Model a validação dos dados da View e controle de acesso aos métodos
  * da DAO.
  */
-class PessoaModel
-{
+class PessoaModel{
     /**
      * Declaração das propriedades conforme campos da tabela no banco de dados.
      * para saber mais sobre Propriedades de Classe, leia: https://www.php.net/manual/pt_BR/language.oop5.properties.php
      */
-    public $user, $nome, $email, $cell, $cpf, $senha, $data_c;
+    public $user, $nome, $email, $cell, $cnpj, $senha, $data_c, $nivel_usuario;
 
     public $user_login, $pass;
 
@@ -26,8 +25,7 @@ class PessoaModel
      * Declaração do método save que chamará a DAO para gravar no banco de dados
      * o model preenchido.
      */
-    public function save_us()
-    {
+    public function save_us(){
         
         include  'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
 
@@ -40,40 +38,41 @@ class PessoaModel
 
                
     }
-    public function validar_logar()
-    {
+    public function validateLogin(string $user,  string $password){
         
         include  'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
 
         // Instância do objeto e conexão no banco de dados via construtor
         $dao = new PessoaDAO(); 
+      
+        $findUser = $dao->selectUser($user);
 
-            // Chamando o método de validação que recebe o próprio objeto model
-            // já preenchido
-            $dao->logar_conta($this);
+        if($user == $findUser['user']) {
+            if(password_verify($password, $findUser['senha'])){
+                return true;
+            }else{
+                $erro = error_get_last();
+                if ($erro) {
+                    echo "Erro: " . $erro["message"];
+                    return false;
+                } else {
+                    echo "Senha incorreta!!!";
+                    return false;
+                }
+            }
+        }else {
+            echo "Usuário inserido esta incorreto!!!";
+        }
 
     }
-    public function validar_logar2()
-    {
-        
-        include  'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
-
-        // Instância do objeto e conexão no banco de dados via construtor
-        $dao = new PessoaDAO(); 
-
-            // Chamando o método de validação que recebe o próprio objeto model
-            // já preenchido
-            $dao->logar_conta2($this);
-
-    }
+   
 
     /**
      * Método que encapsula a chamada a DAO e que abastecerá a propriedade rows;
      * Esse método é importante pois como a model é "vista" na View a propriedade
      * $rows será acessada e possibilitará listar os registros vindos do banco de dados
      */
-    public function getAllRows()
-    {
+    public function getAllRows(){
         include 'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
         
         // Instância do objeto e conexão no banco de dados via construtor
@@ -90,8 +89,7 @@ class PessoaModel
      * O método recebe um parâmetro do tipo inteiro que é o id do registro
      * a ser recuperado do MySQL, via camada DAO.
      */
-    public function getById(int $id)
-    {
+    public function getById(int $id){
         include 'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
 
         $dao = new PessoaDAO();
@@ -115,8 +113,7 @@ class PessoaModel
      * O método recebe um parâmetro do tipo inteiro que é o id do registro
      * que será excluido da tabela no MySQL, via camada DAO.
      */
-    public function delete(int $id)
-    {
+    public function delete(int $id){
         include 'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
 
         $dao = new PessoaDAO();

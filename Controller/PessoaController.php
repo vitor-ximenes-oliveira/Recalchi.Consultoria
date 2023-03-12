@@ -14,8 +14,7 @@ class PessoaController
      * Os métodos index serão usados para devolver uma View.
      * Para saber mais sobre métodos estáticos, leia: https://www.php.net/manual/pt_BR/language.oop5.static.php
      */
-    public static function index()
-    {
+    public static function index(){
         // Para saber mais sobre include , leia: https://www.php.net/manual/pt_BR/function.include.php
         include 'Model/PessoaModel.php'; // inclusão do arquivo model.
         
@@ -29,8 +28,7 @@ class PessoaController
     /**
      * Devolve uma View contendo um formulário para o usuário.
      */
-    public static function form()
-    {
+    public static function form(){
         include 'Model/PessoaModel.php'; // inclusão do arquivo model.
         $model = new PessoaModel();
 
@@ -40,42 +38,30 @@ class PessoaController
 
         include 'View/modules/Pessoa/login.php'; // Include da View. Note que a variável $model está disponível na View.
     }
-    public static function logar2()
-    {
-        include 'Model/PessoaModel.php'; // inclusão do arquivo model.
-            $model = new PessoaModel();
-
-            $model->user_login =  $_POST['user'];
-            $model->pass = $_POST['pass'];
-            // $model->pass = password_verify($_POST['pass'], PASSWORD_DEFAULT);
-  
-            $model->validar_logar2(); // chamando o método logar da model.
- }
-    public static function home()
-    {
+    public static function home(){
         include 'Model/PessoaModel.php'; // inclusão do arquivo model.
         
         include 'View/modules/Pessoa/home.php'; // Include da View. Note que a variável $model está disponível na View.
     }
-    public static function logar()
-    {            
+    public static function logar(){            
         include 'Model/PessoaModel.php'; // inclusão do arquivo model.
             $model = new PessoaModel();
-
-            $model->user_login =  $_POST['user'];
-            $model->pass = password_verify($_POST['pass'], PASSWORD_DEFAULT);
+            $user = $model->user_login =  $_POST['user'];
+            $password = $model->pass = $_POST['pass'];
+            $validarLogin = $model-> validateLogin($user,$password);
   
-            $model->validar_logar(); // chamando o método logar da model.
+            if($validarLogin){
+                header("Location:/app/gestao");   
+            }else{
+                echo "Erro ao realizar o login";
+            }
+    }
 
-        }
-
-    public static function gestao()
-    {
-        include 'View/modules/serviços/gestaopj.php'; // Página Pde atendimento PJ
+    public static function gestao(){
+        include 'View/modules/serviços/gestao.php'; // Página Pde atendimento PJ
 
     }
-    public static function serviços_pj()
-    {
+    public static function servicos_pj(){
         include 'View/modules/serviços/home.php'; // Página Principal de serviços.
 
     }
@@ -83,8 +69,7 @@ class PessoaController
     /**
      * Preenche um Model para que seja enviado ao banco de dados para salvar.
      */
-    public static function save_user()
-    {
+    public static function save_user(){
        include_once 'Model/PessoaModel.php'; // inclusão do arquivo model.
 
        
@@ -97,13 +82,14 @@ class PessoaController
        $model->nome = $_POST['nome_cad'];
        $model->email = $_POST['email_cad'];
        $model->cell = $_POST['cell_cad'];
-       $model->cpf = $_POST['cpf_cad'];
+       $model->cnpj = $_POST['cpf_cad'];
        $model->senha = password_hash($_POST['senha_cad'], PASSWORD_DEFAULT);
        $model->data_c = $_POST['data_c'];
-
+       $model->nivel_usuario = 1;
+       
        $model->save_us(); // chamando o método save da model.
 
-       header( "Location:/app/login_pj"); // redirecionando o usuário para outra rota.
+       header( "Location:/app/home"); // redirecionando o usuário para outra rota.
     }
 
     /**
