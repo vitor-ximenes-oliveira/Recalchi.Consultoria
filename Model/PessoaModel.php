@@ -10,7 +10,7 @@ class PessoaModel{
      * Declaração das propriedades conforme campos da tabela no banco de dados.
      * para saber mais sobre Propriedades de Classe, leia: https://www.php.net/manual/pt_BR/language.oop5.properties.php
      */
-    public $user, $nome, $email, $cell, $cnpj, $senha, $data_c, $nivel_usuario;
+    public $id, $user, $nome, $email, $cell, $cnpj, $senha, $data_c, $nivel_usuario;
 
     public $user_login, $pass;
 
@@ -38,13 +38,30 @@ class PessoaModel{
 
                
     }
+
+    public function saveUpdate(){
+        
+        include  'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
+
+        // Instância do objeto e conexão no banco de dados via construtor
+        $dao = new PessoaDAO(); 
+
+            // Chamando o método insert que recebe o próprio objeto model
+            // já preenchido
+            $dao->update($this);
+
+               
+    }
+
+
+
     public function validateLogin(string $user,  string $password){
         
         include  'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
 
         // Instância do objeto e conexão no banco de dados via construtor
         $dao = new PessoaDAO(); 
-      
+        
         $findUser = $dao->selectUser($user);
 
         if($user == $findUser['user']) {
@@ -63,6 +80,15 @@ class PessoaModel{
         }else {
             echo "Usuário inserido esta incorreto!!!";
         }
+
+    }
+
+    public function getUserId(string $user){
+        include  'DAO/PessoaDAO.php';
+        $dao = new PessoaDAO();
+        $findUser = $dao->selectUser($user);
+
+        return $findUser['idusuario'];
 
     }
    
@@ -113,11 +139,11 @@ class PessoaModel{
      * O método recebe um parâmetro do tipo inteiro que é o id do registro
      * que será excluido da tabela no MySQL, via camada DAO.
      */
-    public function delete(int $id){
+    public function delete(){
         include 'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
 
         $dao = new PessoaDAO();
 
-        $dao->delete($id);
+            $dao->delete($this);
     }
 }

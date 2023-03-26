@@ -21,7 +21,7 @@ class PessoaController
         $model = new PessoaModel(); // Instância da Model
         $model->getAllRows(); // Obtendo todos os registros, abastecendo a propriedade $rows da model.
 
-        include 'View/modules/Pessoa/home.php'; // Include da View, propriedade $rows da Model pode ser acessada na View
+        include 'View/modules/Pessoa/gerencia_user.php'; // Include da View, propriedade $rows da Model pode ser acessada na View
     }
 
 
@@ -51,7 +51,8 @@ class PessoaController
             $validarLogin = $model-> validateLogin($user,$password);
   
             if($validarLogin){
-                header("Location:/app/gestao");   
+                header("Location:/app/gestao");
+                return $user;   
             }else{
                 echo "Erro ao realizar o login";
             }
@@ -61,6 +62,46 @@ class PessoaController
         include 'View/modules/serviços/gestao.php'; // Página Pde atendimento PJ
 
     }
+
+    public static function usuarios(){
+        include   'View/modules/Pessoa/gerencia_user.php';
+    }
+
+    public static function redirectEdit(){
+        include 'View/modules/Pessoa/editUser.php';
+    }
+
+    public static function editUser(){
+        include 'Model/PessoaModel.php';
+
+        $model = new PessoaModel();
+
+        $model->user =  $_POST['user_cad'];
+        $model->nome = $_POST['nome_cad'];
+        $model->email = $_POST['email_cad'];
+        $model->cell = $_POST['cell_cad'];
+        $model->cnpj = $_POST['cpf_cad'];
+        $model->senha = password_hash($_POST['senha_cad'], PASSWORD_DEFAULT);
+        $model->id=$_POST['id_cad'];
+
+        $model->saveUpdate();
+
+        header("Location:/app/usuarios");
+       
+    }
+
+    public static function deleteUser(){
+        include 'Model/PessoaModel.php';
+
+        $model = new PessoaModel();
+        $model->id = $_GET['id'];
+        $model->delete();
+
+        header("Location:/app/usuarios");
+
+
+    }
+
     public static function servicos_pj(){
         include 'View/modules/serviços/home.php'; // Página Principal de serviços.
 

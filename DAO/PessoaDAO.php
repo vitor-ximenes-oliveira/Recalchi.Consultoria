@@ -74,16 +74,35 @@ class PessoaDAO
      * Método que recebe o Model preenchido e atualiza no banco de dados.
      * Note que neste model é necessário ter a propriedade id preenchida.
      */
-    public function update(PessoaModel $model){
-        $sql = "UPDATE pessoa SET nome=?, cpf=?, data_nascimento=? WHERE id=? ";
+    public function update( PessoaModel $model){
+
+        //make the variants to get each field
+        $user = $model->user;
+        $nome = $model->nome;
+        $telefone = $model->cell;
+        $email = $model->email;
+        $cnpj = $model->cnpj;
+        $senha = $model->senha;
+        $id = $model->id;
+        var_dump($user);
+        var_dump($nome);
+        var_dump($telefone);
+        var_dump($email);
+        var_dump($cnpj);
+        var_dump($senha);
+        var_dump($id);
+
+
+        $sql = "UPDATE usuarios SET user=:user, nome=:nome, email=:email, telefone=:telefone, cnpj=:cnpj, senha=:senha  WHERE idusuario=:id ";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $model->id);
-        $stmt->bindValue(2, $model->nome);
-        $stmt->bindValue(3, $model->email);
-        $stmt->bindValue(4, $model->cell);
-        $stmt->bindValue(5, $model->cnpj);
-        $stmt->bindValue(6, $model->senha);
+        $stmt->bindParam(":id", $model->id);
+        $stmt->bindParam(":user", $model->user);
+        $stmt->bindParam(":nome", $model->nome);
+        $stmt->bindParam(":telefone", $model->cell);
+        $stmt->bindParam(":email", $model->email);
+        $stmt->bindParam(":cnpj", $model->cnpj);
+        $stmt->bindParam(":senha", $model->senha);
         $stmt->execute();
     }
 
@@ -92,7 +111,7 @@ class PessoaDAO
      * Método que retorna todas os registros da tabela pessoa no banco de dados.
      */
     public function select(){
-        $sql = "SELECT * FROM usuario ";
+        $sql = "SELECT * FROM usuarios ";
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -111,10 +130,10 @@ class PessoaDAO
     public function selectById(int $id){
         include_once 'Model/PessoaModel.php';
 
-        $sql = "SELECT * FROM pessoa WHERE id = ?";
+        $sql = "SELECT * FROM usuarios WHERE idusuario = :id";
 
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $id);
+        $stmt->bindParam(":id", $id);
         $stmt->execute();
 
         return $stmt->fetchObject("PessoaModel"); // Retornando um objeto específico PessoaModel
@@ -125,11 +144,11 @@ class PessoaDAO
      * Remove um registro da tabela pessoa do banco de dados.
      * Note que o método exige um parâmetro $id do tipo inteiro.
      */
-    public function delete(int $id){
-        $sql = "DELETE FROM pessoa WHERE id = ? ";
-
+    public function delete(PessoaModel $model){
+        $sql = "DELETE FROM usuarios WHERE idusuario = :id ";
+        $id = $model->id;
         $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $id);
+        $stmt->bindParam(":id", $id);
         $stmt->execute();
     }
 

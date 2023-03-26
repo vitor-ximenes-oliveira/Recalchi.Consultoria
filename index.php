@@ -36,6 +36,20 @@ switch($url)
         
         PessoaController::gestao();
     break;
+
+    case '/app/usuarios':
+        PessoaController::usuarios();
+    break;
+
+    case  '/app/redirectEdit':
+        PessoaController::redirectEdit();
+    break;
+    case '/app/editUser':
+        PessoaController::editUser();
+    break;
+    case '/app/deleteUser':
+        PessoaController::deleteUser();
+    break;
     case '/app/campanha':
         
         PessoaController::servicos_pj();

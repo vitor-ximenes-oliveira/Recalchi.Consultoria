@@ -52,7 +52,7 @@
                         <li><a href="#">Gerenciamento<i class="fa fa-sort-desc" aria-hidden="true"></i><a>
                         
                         <ul>
-                            <li><a href="gerenciamento.php">Usuarios</a></li>
+                            <li><a href="/app/usuarios">Usuarios</a></li>
                         </ul>
                         <li><a href="#">Contato</a></li>
                     </ul>
@@ -60,7 +60,7 @@
             </div>
                  <div class="headerbutton left">
                     <?php
-                        echo "<h3>Bem vindo <p>$logado</p></h3>";
+                        echo "<h3>Bem vindo <p>$user</p></h3>";
                     ?>    
                 <a class="headerbtn" href="sair.php">Sair</a>
             </div>
