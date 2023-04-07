@@ -44,18 +44,34 @@ class PessoaController
         include 'View/modules/Pessoa/home.php'; // Include da View. Note que a variável $model está disponível na View.
     }
     public static function logar(){            
-        include 'Model/PessoaModel.php'; // inclusão do arquivo model.
+        include 'Model/PessoaModel.php'; 
+        // inclusão do arquivo model.
             $model = new PessoaModel();
             $user = $model->user_login =  $_POST['user'];
             $password = $model->pass = $_POST['pass'];
             $validarLogin = $model-> validateLogin($user,$password);
+
+            //$idUser = $model->getUserId($user);
+            //var_dump($idUser);
   
             if($validarLogin){
+                session_start(); // Inicia a sessão
+                $_SESSION['usuario'] = $user;
+                $_SESSION['senha'] = $password;
+
                 header("Location:/app/gestao");
-                return $user;   
+                //return $userLogin;
+                
             }else{
                 echo "Erro ao realizar o login";
             }
+    }
+
+    public static function logout(){
+        session_start(); // inicia a sessão
+        session_destroy();
+        header("Location:/app/login");
+        exit();
     }
 
     public static function gestao(){
@@ -125,7 +141,7 @@ class PessoaController
        $model->cell = $_POST['cell_cad'];
        $model->cnpj = $_POST['cpf_cad'];
        $model->senha = password_hash($_POST['senha_cad'], PASSWORD_DEFAULT);
-       $model->data_c = $_POST['data_c'];
+       $model->data_c = date('YYYY-MM-DD HH:MM:SS');
        $model->nivel_usuario = 1;
        
        $model->save_us(); // chamando o método save da model.

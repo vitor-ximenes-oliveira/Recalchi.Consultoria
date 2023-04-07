@@ -84,7 +84,7 @@ class PessoaModel{
     }
 
     public function getUserId(string $user){
-        include  'DAO/PessoaDAO.php';
+        include 'DAO/PessoaDAO.php';
         $dao = new PessoaDAO();
         $findUser = $dao->selectUser($user);
 

@@ -4,8 +4,7 @@
  * As classes DAO (Data Access Object) são responsáveis por executar os
  * SQL junto ao banco de dados.
  */
-class PessoaDAO
-{
+class PessoaDAO{
     /**
      * Atributo (ou Propriedade) da classe destinado a armazenar o link (vínculo aberto)
      * de conexão com o banco de dados.

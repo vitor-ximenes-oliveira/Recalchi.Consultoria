@@ -62,11 +62,11 @@
           </p>
           <p> 
             <label for="cell_cad">Seu celular </label>
-            <input id="cell_cad" name="cell_cad" required="required" type="number" placeholder="11 98789-9797"/>
+            <input id="cell_cad" name="cell_cad" required="required" type="number" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" title="Digite um telefone no formato (xx) xxxx-xxxx ou (xx) xxxxx-xxxx"/>
           </p>
           <p> 
             <label for="cpf_cad">Seu cpf </label>
-            <input id="cpf_cad" name="cpf_cad" required="required" type="number" placeholder="000000000.92"/>
+            <input id="cpf_cad" name="cpf_cad" required="required" type="number" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" title="Digite um CPF no formato xxx.xxx.xxx-xx"/>
           </p>          
           <p> 
             <label for="senha_cad">Sua senha</label>

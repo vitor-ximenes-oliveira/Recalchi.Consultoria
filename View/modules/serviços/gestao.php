@@ -1,14 +1,24 @@
 <?php
+    include 'DAO/PessoaDAO.php';
 
-    // session_start();
-    // //print_r ($_SESSION);
-    // if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['senha']) ==  true)) 
-    // {
-    //     unset($_SESSION['user']);
-    //     unset($_SESSION['senha']);
-    //     header ('location: DAO/PessoaDAO.php';
-    // }
-    // $logado = $_SESSION['user'];
+    $dao = new PessoaDAO();
+//
+    session_start(); // Inicia a sessão
+    if (isset($_SESSION['usuario']) && isset($_SESSION['senha'])) {
+      // Acessa o nome do usuário na sessão
+      $nomeUsuario = $_SESSION['usuario'];
+      $user = $dao->selectUser($nomeUsuario);
+      $nome = $user['nome'];
+      $nivelUsuario = $user['nivel_usuario'];
+
+      // Faça o que for necessário com o nome do usuário
+      // Por exemplo, exiba uma mensagem de boas-vindas com o nome do usuário
+     // echo 'Bem-vindo, ' . $nomeUsuario . '!';
+    } else {
+      // Redireciona para a página de login
+      header('Location:/app/login.php');
+      exit();
+    }
 
 ?>
 
@@ -50,19 +60,24 @@
                             <li><a href="#">Fluxo para Investimentos</a></li>
                         </ul>
                         <li><a href="#">Gerenciamento<i class="fa fa-sort-desc" aria-hidden="true"></i><a>
-                        
-                        <ul>
-                            <li><a href="/app/usuarios">Usuarios</a></li>
-                        </ul>
+                        <?php
+                        if($nivelUsuario != 1 && $nivelUsuario != null){
+                        ?>
+                            <ul>
+                                <li><a href="/app/usuarios">Usuarios</a></li>
+                            </ul>
+                            <?php
+                        }
+                        ?>
                         <li><a href="#">Contato</a></li>
                     </ul>
                 </div>
             </div>
                  <div class="headerbutton left">
                     <?php
-                        echo "<h3>Bem vindo <p>$user</p></h3>";
+                        echo "<h3>Bem vindo <p>".$nome."</p></h3>";
                     ?>    
-                <a class="headerbtn" href="sair.php">Sair</a>
+                <a class="headerbtn" href='/app/logout'>Sair</a>
             </div>
         </div>
     </div>
