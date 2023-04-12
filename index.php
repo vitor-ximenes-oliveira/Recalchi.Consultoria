@@ -9,62 +9,62 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 switch($url)
 {
 
-    case '/app/':
+    case '/':
         {
             include 'View/modules/Pessoa/index.html';
         }
     break;
 
 
-    case '/app/login':
+    case '/login':
         
         PessoaController::form();
     break;
 
-    case '/app/login_logar':
+    case '/login_logar':
 
         PessoaController::logar();
     break;
-    case '/app/logout':
+    case '/logout':
         PessoaController::logout();
     break;
 
-    case '/app/gestao':
+    case '/gestao':
         
         PessoaController::gestao();
     break;
 
-    case '/app/usuarios':
+    case '/usuarios':
         PessoaController::usuarios();
     break;
 
-    case  '/app/redirectEdit':
+    case  '/redirectEdit':
         PessoaController::redirectEdit();
     break;
-    case '/app/editUser':
+    case '/editUser':
         PessoaController::editUser();
     break;
-    case '/app/deleteUser':
+    case '/deleteUser':
         PessoaController::deleteUser();
     break;
-    case '/app/campanha':
+    case '/campanha':
         
         PessoaController::servicos_pj();
     break;
 
-    case '/app/home':
+    case '/home':
         PessoaController::home();
     break;
 
-    case '/app/save':
+    case '/save':
         PessoaController::save_user();
     break;
 
-    case '/pessoa/delete':
+    case '/delete':
         PessoaController::delete();
     break;
 
     default:
-        echo "Erro 404";
+        PessoaController::form();
     break;
 }

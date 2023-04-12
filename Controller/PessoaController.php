@@ -59,7 +59,7 @@ class PessoaController
                 $_SESSION['usuario'] = $user;
                 $_SESSION['senha'] = $password;
 
-                header("Location:/app/gestao");
+                header("Location:/gestao");
                 //return $userLogin;
                 
             }else{
@@ -70,7 +70,7 @@ class PessoaController
     public static function logout(){
         session_start(); // inicia a sessão
         session_destroy();
-        header("Location:/app/login");
+        header("Location:/login");
         exit();
     }
 
@@ -113,7 +113,7 @@ class PessoaController
         $model->id = $_GET['id'];
         $model->delete();
 
-        header("Location:/app/usuarios");
+        header("Location:/usuarios");
 
 
     }
@@ -146,7 +146,7 @@ class PessoaController
        
        $model->save_us(); // chamando o método save da model.
 
-       header( "Location:/app/home"); // redirecionando o usuário para outra rota.
+       header( "Location:/home"); // redirecionando o usuário para outra rota.
     }
 
     /**

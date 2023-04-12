@@ -16,7 +16,7 @@
      // echo 'Bem-vindo, ' . $nomeUsuario . '!';
     } else {
       // Redireciona para a página de login
-      header('Location:/app/login.php');
+      header('Location: /login.php');
       exit();
     }
 
@@ -30,7 +30,7 @@
     <title>Recalchi - Manage</title>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="/app/View/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/View/css/style.css">
 
     <script type="text/javascript" src="js/home.js"></script>
 
@@ -64,7 +64,7 @@
                         if($nivelUsuario != 1 && $nivelUsuario != null){
                         ?>
                             <ul>
-                                <li><a href="/app/usuarios">Usuarios</a></li>
+                                <li><a href="/usuarios">Usuarios</a></li>
                             </ul>
                             <?php
                         }
@@ -77,7 +77,7 @@
                     <?php
                         echo "<h3>Bem vindo <p>".$nome."</p></h3>";
                     ?>    
-                <a class="headerbtn" href='/app/logout'>Sair</a>
+                <a class="headerbtn" href='/logout'>Sair</a>
             </div>
         </div>
     </div>

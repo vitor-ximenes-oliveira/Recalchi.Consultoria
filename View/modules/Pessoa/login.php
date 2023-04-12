@@ -4,7 +4,7 @@
    <head>
        <meta charset="utf-8"/>
        <title>Recalchi consultoria - Cadastro/Login</title>
-       <link rel="stylesheet" type="text/css" href="/app/View/css/styles_form.css">
+       <link rel="stylesheet" type="text/css" href="/View/css/styles_form.css">
    </head>
    <body>
        <div class="container" >
@@ -14,7 +14,7 @@
     <div class="content">      
       <!--FORMULÁRIO DE LOGIN-->
       <div id="login">
-        <form method="POST" action="/app/login_logar"> 
+        <form method="POST" action="/login_logar"> 
           <h1>Login</h1> 
           <p> 
             <label for="user">Seu Usuário</label>
@@ -43,7 +43,7 @@
 
       <!--FORMULÁRIO DE CADASTRO--> 
       <div id="cadastro">
-      <form method="post" action="/app/save">
+      <form method="post" action="/save">
           <h1>Cadastro</h1> 
           
           <p> 
@@ -65,7 +65,7 @@
             <input id="cell_cad" name="cell_cad" required="required" type="number" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}" title="Digite um telefone no formato (xx) xxxx-xxxx ou (xx) xxxxx-xxxx"/>
           </p>
           <p> 
-            <label for="cpf_cad">Seu cpf </label>
+            <label for="cpf_cad">Seu cnpj </label>
             <input id="cpf_cad" name="cpf_cad" required="required" type="number" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" title="Digite um CPF no formato xxx.xxx.xxx-xx"/>
           </p>          
           <p> 

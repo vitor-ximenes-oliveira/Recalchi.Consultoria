@@ -24,11 +24,12 @@ class PessoaDAO{
         // DSN (Data Source Name) onde o servidor MySQL será encontrado
         // (host) em qual porta o MySQL está operado e qual o nome do banco pretendido
         // Mais informações sobre DSN: https://www.php.net/manual/pt_BR/ref.pdo-mysql.connection.php
-        $dsn = "mysql:host=localhost:3306;dbname=manage";
+        $dsn = "mysql:host=sql206.epizy.com:3306;dbname=epiz_33089167_manage";
+        //$dsn = "mysql:host=localhost:3306;dbname=manage";
 
         // Criando a conexão e armazenado na propriedade definida para tal.
         // Veja o que é PDO: https://www.php.net/manual/pt_BR/intro.pdo.php
-        $this->conexao = new PDO($dsn, 'root', '');
+        $this->conexao = new PDO($dsn, 'epiz_33089167', 'ZEJLqQTZzLO');
     }
 
 

@@ -18,7 +18,7 @@
    <head>
        <meta charset="utf-8"/>
        <title>Recalchi consultoria - Cadastro/Login</title>
-       <link rel="stylesheet" type="text/css" href="/app/View/css/styles_form.css">
+       <link rel="stylesheet" type="text/css" href="/View/css/styles_form.css">
    </head>
    <body>
        <div class="container" >
@@ -28,7 +28,7 @@
     <div class="content">      
       <!--FORMULÁRIO DE EDIÇÃO--> 
       <div id="cadastro">
-      <form method="post" action="/app/editUser">
+      <form method="post" action="/editUser">
           <h1>Edição de Usuário</h1> 
           
           <p> 

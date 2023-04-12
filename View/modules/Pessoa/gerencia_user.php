@@ -14,13 +14,13 @@
     <link rel="icon" href="logor.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="/app/View/css/style_tab.css">
+    <link rel="stylesheet" type="text/css" href="/View/css/style_tab.css">
 </head>
 <body>
     <div class="headersection clear">
         <div class="midcontent">
             <div class="headerlogo left">
-                <a class="logo" target="_blank" href="/app/View/module/Pessoa/logo.png">
+                <a class="logo" target="_blank" href="/View/module/Pessoa/logo.png">
                   <img src="https://i.ibb.co/mq6R9Sw/Logotipo-500x500-px.png" alt="Logotipo-500x500-px">
                  <span>RECALCHI MANAGE</span>
                 </a>
@@ -59,8 +59,8 @@
                                 <td><?php echo $usuarios->telefone; ?></td>
                                 <td><?php echo $usuarios->cnpj; ?></td>
                                 <td><?php echo $usuarios->senha; ?></td>
-                                <td><a href='/app/redirectEdit?id=<?php echo $usuarios->idusuario; ?>' class="fa fa-pencil" aria-hidden="true"></a></td>
-                                <td><a href='/app/deleteUser?id=<?php echo $usuarios->idusuario; ?>' class="fa fa-trash" aria-hidden="true"></i></td>
+                                <td><a href='/redirectEdit?id=<?php echo $usuarios->idusuario; ?>' class="fa fa-pencil" aria-hidden="true"></a></td>
+                                <td><a href='/deleteUser?id=<?php echo $usuarios->idusuario; ?>' class="fa fa-trash" aria-hidden="true"></i></td>
                                 
                             </tr>
                         <?php } ?>
