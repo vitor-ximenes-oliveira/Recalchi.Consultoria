@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recalchi - Consultoria</title>
+    <link rel="icon" href="logor.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="style_pricing.css">
+</head>
+<body>
+    <div class="headersection clear">
+        <div class="midcontent">
+            <div class="headerlogo left">
+                <a class="logo" target="_blank" href="home.html">
+                  <img src="https://i.ibb.co/mq6R9Sw/Logotipo-500x500-px.png" alt="Logotipo-500x500-px">
+                 <span>RECALCHI MANAGE</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    
+    <div class="bannersection">
+        <div class="midcontent">
+            <div class="bannercontent tc">
+              
+              <h2>Etapas da Formação do seu Preço</h2>
+              
+              <h3>Para precificação do seu produto/serviço cadastramos nas seguintes etapas </h3>
+              <br>
+                <h3>1ª Etapa - Matéria Prima</h3>
+                <br>
+                <a  class="defaultbtn" href="cad_prisingMPM².html"> <i class="fa fa-crop" aria-hidden="true"></i> Matéria Prima por M²</a>
+                <a class="defaultbtn" href="cad_prisingKG"> <i class="fa fa-balance-scale" aria-hidden="true"></i> Matéria Prima por Kg</a>
+                <br>                <br>
+
+                <h3>2ª Etapa - Complementos </h3><br>
+                <a  class="defaultbtn" href="cad_prising_compl.html"> <i class="fa fa-cubes" aria-hidden="true"></i> Complementos</a>
+
+                <br><br>
+                <h3>3ª Etapa - Métricas de Deduções</h3><br>
+                <a  class="defaultbtn" href="cad_prising_metric.html"> <i class="fa fa-percent" aria-hidden="true"></i> Definir Métricas</a>
+                
+                <br><br>
+                <h3>4ª Etapa - Formação de Preço Final</h3><br>
+                <a  class="defaultbtn" href="cad_prising_final.html"> <i class="fa fa-tag" aria-hidden="true"></i> Prising Final</a>
+
+            </div>
+        </div>
+    </div>
+
+    <h1>Gerenciamento de Pricing</h1>
+	<div class="kanban-board">
+		<div class="kanban-column">
+			<h2>A Fazer</h2>
+			<div class="kanban-card">
+				<h3>Produto A</h3>
+				<p>R$ 100,00</p>
+				
+      </div>        <button>Cadastrar</button>
+
+		</div>
+		<div class="kanban-column">
+			<h2>Em Andamento</h2>
+			<div class="kanban-card">
+				<h3>Produto B</h3>
+				<p>R$ 150,00</p>
+				<div class="kanban-card-actions">
+					<button>Concluir</button>
+					<button>Arquivar</button>
+				</div>
+			</div>
+			<div class="kanban-card">
+				<h3>Produto C</h3>
+				<p>R$ 200,00</p>
+				<div class="kanban-card-actions">
+					<button>Concluir</button>
+					<button>Arquivar</button>
+				</div>
+			</div>
+		</div>
+		<div class="kanban-column">
+			<h2>Finalizados</h2>
+			<div class="kanban-card kanban-card-archived">
+				<h3>Produto D</h3>
+				<p>R$ 80,00</p>
+			</div>
+			<div class="kanban-card kanban-card-archived">
+				<h3>Produto E</h3>
+				<p>R$ 120,00</p>
+			</div>
+    </div>
+      <div class="kanban-column">
+        <h2>Grupos</h2>
+        <div class="kanban-card kanban-card-archived">
+          <h3>Produto D</h3>
+          <p>R$ 80,00</p>
+        </div>
+        <div class="kanban-card kanban-card-archived">
+          <h3>Produto E</h3>
+          <p>R$ 120,00</p>
+        </div>
+		</div>
+	</div>
+
+    <div class="footer tc tt">
+                <p>&copy; copyright 2022 RECALCHI MANAGE - all rights reserved</p>
+    </div>
+    
+</body>
+
+<!-- Caixa de diálogo modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Editar Produto</h2>
+      <form>
+        <label for="modal-title">Título:</label>
+        <input type="text" id="modal-title" name="title"><br>
+  
+        <label for="modal-price">Preço:</label>
+        <input type="text" id="modal-price" name="price"><br>
+  
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    // Abrir a caixa de diálogo modal ao clicar em um cartão
+    $('.kanban-card').click(function() {
+      // Salvar o conteúdo do cartão em variáveis
+      var title = $(this).find('h3').text();
+      var price = $(this).find('p').text();
+  
+      // Preencher a caixa de diálogo modal com o conteúdo do cartão
+      $('#modal-title').val(title);
+      $('#modal-price').val(price);
+  
+      // Exibir a caixa de diálogo modal
+      $('#myModal').css('display', 'block');
+    });
+  
+    // Fechar a caixa de diálogo modal ao clicar no botão de fechar
+    $('.close').click(function() {
+      $('#myModal').css('display', 'none');
+    });
+  
+    // Fechar a caixa de diálogo modal ao clicar fora dela
+    $(window).click(function(event) {
+      if (event.target == $('#myModal')[0]) {
+        $('#myModal').css('display', 'none');
+      }
+    });
+  });
+  </script>
+
+</html>
